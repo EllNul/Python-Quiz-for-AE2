@@ -29,6 +29,13 @@ quiz_app.py
 
 for nine files in total.
 
+QUESTIONS = [
+{
+        "question": "Which language is used to build Tkinter GUIs?",
+        "options": ["Java", "C#", "Python", "Go"],
+        "answer_index": 2},
+{
+
 
 
 
