@@ -5,7 +5,7 @@
 # - Which is the correct option
 # - Added an extra section that explains why that answer is correct/incorrect, gives explaination.
 
-[
+QUESTIONS = [
 {
 "question": "Q1: In Databricks, which layer should data analysts generally query for reporting?",
 "options": ["Bronze", "Silver", "Gold", "Raw"],   
