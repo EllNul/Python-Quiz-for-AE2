@@ -40,7 +40,7 @@
 "question": "Q6: In analytics modelling, what is a 'Fact Table'?",
 "options": ["A table of unstructured files", "A table containing business events or measurements", "A table containing lookup values", "A table containing only binary data"],
         "answer_index": 1,
-        "explanation": "Fact tables store measurable events (e.g., sales, orders) that aggregate along related dimension attributes."
+        "explanation": "Fact tables store measurable events (e.g. Provider_sk or Leaner_sk) that aggregate along related dimension attributes."
 },
 {
 "question": "Q7: In a star schema, Dimension Tables usually contain:",
