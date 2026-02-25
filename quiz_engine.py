@@ -35,6 +35,10 @@ class QuizEngine:
         self.index += 1
         return self.index < len(self.questions)
     
+    def correct_answer_text(self) -> str:
+        q = self.current_question()
+        return q["options"][q["answer_index"]] # This is important in helping the QUIZ_UI regognise that an answer selected in incorrect and to display the incorrect message.
+    
     # If the boolean would return false e.g. no more questions then it will move the the ending_screen.
 
     def restart(self):
