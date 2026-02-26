@@ -14,13 +14,7 @@ CROSS = "❌"
 
 
 class EndScreen:
-    """
-    End screen summary:
-      - "Your score was X/15" (with 'score' highlighted)
-      - 3 grey columns with black border containing Q1..Q15 + tick/cross
-      - Grey thank-you strip
-      - 'Restart Quiz' button with blue border at the bottom
-    """
+
     def __init__(self, root, results, score, total, on_restart):
         self.root = root
         self.results = results              # list[tuple[str, bool]] -> (question_text, is_correct)
@@ -28,11 +22,11 @@ class EndScreen:
         self.total = total
         self.on_restart = on_restart
 
-        # ---------- MAIN ----------
+        # MAIN
         self.frame = tk.Frame(root, bg=BG_DARK)
         self.frame.pack(fill="both", expand=True)
 
-        # ---------- HEADER: "Your score was X/15" ----------
+        # HEADER: "Your score was X/15" 
         header = tk.Frame(self.frame, bg=BG_DARK)
         header.pack(pady=(20, 12))
 
@@ -48,7 +42,7 @@ class EndScreen:
             header, text=f" was {self.score}/{self.total}", font=("Arial", 18), fg=FG_TEXT, bg=BG_DARK
         ).pack(side="left")
 
-        # ---------- RESULTS GRID (3 columns x 5 rows) ----------
+        # RESULTS GRID (3 columns x 5 rows)
         # Prepare data as boolean list by question index
         # If results length < total (edge cases), pad with False
         flags = [is_correct for (_q, is_correct) in self.results]
@@ -78,7 +72,7 @@ class EndScreen:
                 # i is 1-based question number; flags index is i-1
                 ok = flags[i - 1] if (0 <= i - 1 < len(flags)) else False
                 symbol = CHECK if ok else CROSS
-                fg_symbol = "#3EE46B" if ok else "#FF5C5C"  # nice green/red for icons
+                fg_symbol = "#3EE46B" if ok else "#FF5C5C"
 
                 row = tk.Frame(col_frame, bg=GREY)
                 row.pack(anchor="w", padx=10, pady=6)
@@ -97,7 +91,7 @@ class EndScreen:
         add_rows(col2, 6, 10)
         add_rows(col3, 11, 15)
 
-        # ---------- THANK YOU STRIP ----------
+        # THANK YOU STRIP 
         thanks_border = tk.Frame(self.frame, bg=BORDER)
         thanks_border.pack(pady=(8, 12))
 
@@ -112,7 +106,7 @@ class EndScreen:
         )
         thanks.pack(padx=2, pady=2)
 
-        # ---------- RESTART BUTTON (GREY with BLUE BORDER) ----------
+        # RESTART BUTTON 
         btn_border = tk.Frame(self.frame, bg=BLUE)
         btn_border.pack(pady=(0, 20))
 
@@ -138,13 +132,13 @@ class EndScreen:
         restart_btn.bind("<Enter>", _hover_in)
         restart_btn.bind("<Leave>", _hover_out)
 
-    # ---------- Action ----------
+    # Action
     def _handle_restart(self):
         self.hide()
         if callable(self.on_restart):
             self.on_restart()
 
-    # ---------- Control ----------
+    # Control
     def show(self):
         self.frame.pack(fill="both", expand=True)
 
