@@ -364,9 +364,8 @@ NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
 The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
 
 #### Results table
-Finally there is the results table, this is connected to the mainquiz UI and stores the name and reults of all the users who have done the quiz as well as the time they did it.
-This is really useful to be able to store user progress due to the ability to be able to re-run the quiz and could showcase progress if the user wanted to take the quiz again after some databricks training.
-
+Finally there is the results table, this is connected to the mainquiz UI and stores the "name", "score", "total", "percent" and "timestamp" of all the users who have done the quiz as well as the time they did it.
+This is really useful as it stores user progress as part of a CSV file and due to the ability to re-run the quiz it could also showcase progress if the user wanted to take the quiz again after some databricks training.
 
 ```python
 RESULTS_CSV = Path("quiz_results.csv")
@@ -385,7 +384,10 @@ def append_result(name: str, score: int, total: int, csv_path: Path | str = RESU
         writer.writerow([name, score, total, percent, ts])
 ```
 ## Evaluation
+Here is a visual of the end product,
 
+
+I was really happy with the end result of the quiz
 
 
 
