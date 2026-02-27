@@ -120,7 +120,29 @@ def check_answer(self, choice_index: int) -> bool:
         self.score += 1
     return is_correct
 ```
+#### Moving to the next question
+This controls the progression of the quiz, it does this by utalising the quiz index to check if there is another question.
+This also helps as part of the UI will want to know if there is any more questions, if the boolian is set to false it will move to the ending screen.
 
+```python
+    def next_question(self) -> bool:
+
+    # Moves to the next question. 
+    # Returns True if another question exists, otherwise False.
+
+        self.index += 1
+        return self.index < len(self.questions)
+```
+#### Restart option
+
+An option to restart the quiz, setting the index, score to 0 and clearing all the results. (Replay feature without having to close the app)
+
+```python
+    def restart(self):
+        self.index = 0
+        self.score = 0
+        self.results = [] # Restart the quiz and set th quiz index and user score to 0 again
+```
 
 
 
