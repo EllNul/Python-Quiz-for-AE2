@@ -396,7 +396,7 @@ Here is a visual of the end product,
 </p>
 
 
-I was really happy with the end result of the quiz
+I was really happy with the end result of the quiz..
 
 
 
