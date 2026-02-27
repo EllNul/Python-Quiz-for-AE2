@@ -388,6 +388,9 @@ Here is a visual of the end product,
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/30f87ef6-2fbf-4f58-808c-2faca750aee1" />
 
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/34050e55-82d8-41fb-bf44-d36ff887e23b" />
+
+
 
 I was really happy with the end result of the quiz
 
