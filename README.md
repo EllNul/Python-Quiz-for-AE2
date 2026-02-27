@@ -105,7 +105,7 @@ class QuizEngine:
         self.results = []  # Keep Track of what question a user got right or wrong for results at the end.
 ```
 
-### Answer Checking
+#### Answer Checking
 This method verifies if the user's choice is correct, updates the score, and records the result.
 
 ```python
