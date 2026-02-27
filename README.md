@@ -386,6 +386,8 @@ def append_result(name: str, score: int, total: int, csv_path: Path | str = RESU
 ## Evaluation
 Here is a visual of the end product,
 
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/30f87ef6-2fbf-4f58-808c-2faca750aee1" />
+
 
 I was really happy with the end result of the quiz
 
