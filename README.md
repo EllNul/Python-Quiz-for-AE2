@@ -386,13 +386,13 @@ def append_result(name: str, score: int, total: int, csv_path: Path | str = RESU
 ## Evaluation
 Here is a visual of the end product,
 <p align="center">
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/30f87ef6-2fbf-4f58-808c-2faca750aee1" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/30f87ef6-2fbf-4f58-808c-2faca750aee1" />
 </p>
 <p align="center">
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/5aa90921-66c8-4e82-a20d-f85fba2b3ddc" />
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/5a8a0e48-69d1-43ff-9c12-94d34b0dc657" />
 </p>
 <p align="center">
-<img width="600" src="https://github.com/user-attachments/assets/f63d37df-814a-4dfe-ae70-bdbde2008c2b" />
+<img width="400" src="https://github.com/user-attachments/assets/f63d37df-814a-4dfe-ae70-bdbde2008c2b" />
 </p>
 
 
