@@ -392,7 +392,7 @@ Here is a visual of the end product,
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/5aa90921-66c8-4e82-a20d-f85fba2b3ddc" />
 </p>
 <p align="center">
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/34050e55-82d8-41fb-bf44-d36ff887e23b" />
+<img width="600" src="https://github.com/user-attachments/assets/f63d37df-814a-4dfe-ae70-bdbde2008c2b" />
 </p>
 
 
