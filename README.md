@@ -227,7 +227,7 @@ Ran 7 tests in 0.004s
 
 OK
 ```
-And this when errors occour highlighting exactly which lines within Quiz_Engine have effect errors within the unittest.
+And this when errors occour highlighting exactly which lines within Quiz_Engine have caused errors within the unittest.
 
 ```python
 python -m unittest -v test_quiz.py 
