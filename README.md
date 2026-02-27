@@ -156,6 +156,63 @@ An option to restart the quiz, setting the index, score to 0 and clearing all th
         self.score = 0
         self.results = [] # Restart the quiz and set th quiz index and user score to 0 again
 ```
+## Engine Testing using Test Driven Development (TDD)
 
+####Smoke Test
+```python
+class TestSmoke(unittest.TestCase):
 
+    def test_unittest_runs(self):
+        self.assertTrue(True) # True is always true so should always pass
+
+    def test_questions_load(self):
+        self.assertGreater(len(QUESTIONS), 0) # Make sure that questions is imported correctly, file isn't empty or broken
+```
+####Testing quiz engine
+```python
+class TestQuizEngine(unittest.TestCase): # Testing the quiz engine
+    def setUp(self):
+        self.engine = QuizEngine() # Creates fresh engine, dosen't interfere with other tests
+
+    def test_initial_state(self):
+        self.assertEqual(self.engine.index, 0)
+        self.assertEqual(self.engine.score, 0)
+        self.assertEqual(self.engine.results, []) 
+```
+####Testing correct answers
+
+```python
+def test_correct_answer_increments_score(self):
+    q = self.engine.current_question()
+    correct = q["answer_index"]
+
+    result = self.engine.check_answer(correct)
+
+    self.assertTrue(result)
+    self.assertEqual(self.engine.score, 1)
+    self.assertEqual(len(self.engine.results), 1)
+```
+#### Testing incorrect answers
+```python
+def test_incorrect_answer_does_not_increment_score(self):
+    q = self.engine.current_question()
+    wrong = (q["answer_index"] + 1) % len(q["options"])
+
+    result = self.engine.check_answer(wrong)
+
+    self.assertFalse(result)
+    self.assertEqual(self.engine.score, 0)
+    self.assertEqual(len(self.engine.results), 1)
+```
+####Testing Restart
+```python
+def test_restart_resets(self):
+    self.engine.check_answer(self.engine.current_question()["answer_index"])
+    self.engine.next_question()
+    self.engine.restart()
+
+    self.assertEqual(self.engine.index, 0)
+    self.assertEqual(self.engine.score, 0)
+    self.assertEqual(self.engine.results, [])
+```
 
