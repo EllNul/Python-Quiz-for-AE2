@@ -6,4 +6,7 @@
 
 - Then unzip the folder by selecting extract all when you right click on the file, save into where you would like to store the file.
 
+<img width="294" height="390" alt="image" src="https://github.com/user-attachments/assets/afa27446-1911-4394-8c75-1355d483c5db" />
+
+
 
