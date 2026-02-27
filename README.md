@@ -38,7 +38,7 @@ The image below represent a baseline for the visual appearance of the quiz and w
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/e9cfb728-6bba-4ddf-96e0-957d28cefc61" />
 
 ## Non Functional Requirements
-<img width="1174" height="678" alt="image" src="https://github.com/user-attachments/assets/a33d82ce-1a2d-42bc-b18c-f6adb8f4b0f5" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/a33d82ce-1a2d-42bc-b18c-f6adb8f4b0f5" />
 
 
 -	Font size must be accessible
