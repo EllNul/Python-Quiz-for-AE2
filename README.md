@@ -17,8 +17,9 @@ The layout of the quiz and user journey includes 3 main screens:
 
 I wanted the style of the quiz to also match the look of databricks.
 
+<p align="center">
 <img width="691" height="262" alt="image" src="https://github.com/user-attachments/assets/273cc40d-44fd-4934-95a4-d7dd5dde677a" />
-
+</p>
 
 This is an image of what the main home screen looks like as well as my comments relating to the colour palette which will be the main way for users to have that familiarity with the quiz and  databricks. I then pulled each colour into a colour palette and designed the wireframe of the quiz application.
 
