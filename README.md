@@ -34,28 +34,11 @@ The image below represent a baseline for the visual appearance of the quiz and w
 <img width="781" height="215" alt="image" src="https://github.com/user-attachments/assets/8e9290d8-7505-4bbb-9537-887366f6872b" />
 </p>
 
-### Functional Requirements of the quiz app
--	Input and store name
--	Navigate between questions
--	Submit question selection
--	Get a score out of 15
--	Store these results as part of a CSV connected to username
--	Minimum aspect ration in order to not break visuals
-### Non-Functional Requirements
--	Include the following colour scheme from the colour palette.\
-BG_DARK   = “#1F2630”\
-WHITE     = “#E2E2E2”\
-ACCENT    = “#F86153”\
-GREY      = “#5E5757”\
-BORDER    = “#000000”\
-BLUE      = “#4D91EA”
+## Functional Requirements
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/e9cfb728-6bba-4ddf-96e0-957d28cefc61" />
 
--	Font size must be accessible
--	Message box to show  “incorrect” or “correct”
--	Message box to show  answer explanation
--	Message box to show answer must be selected before next question
--	Name input error handling 
--	Restart Button
+## Non Functional Requirements
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/a33d82ce-1a2d-42bc-b18c-f6adb8f4b0f5" />
 
 ### Tech Stack Outline
 -	[Python 3](https://docs.python.org/3/) — core programming language
@@ -183,6 +166,9 @@ class TestQuizEngine(unittest.TestCase): # Testing the quiz engine
         self.assertEqual(self.engine.score, 0)
         self.assertEqual(self.engine.results, []) 
 ```
+This sets up a new isolated quiz engine instance and tests that the inital state of the quiz must always be index=0, score=0, and results=[].
+It makes sure that the default state of the quiz always remains the same thus also testing regressions that would change this state such as the restart button not reseting the quiz value attributes.
+
 #### Testing correct answers
 
 ```python
@@ -208,6 +194,8 @@ def test_incorrect_answer_does_not_increment_score(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(len(self.engine.results), 1)
 ```
+This tests both sides of the user input, when either a correct answer or incorrect answer is chosen that the score is refelected in the way it should be. As part of the test driven development it ensures that the answer_index is working as it should do. That the quiz_engine and quiz_questions (where the answer_index is stored) are working in tandem with one-another. By testing for both the correct and incorrect user paths it makes sure that testing is more robust, that either side-effect is consistant with the method's declared semantics.
+
 #### Testing Restart
 ```python
 def test_restart_resets(self):
@@ -219,4 +207,117 @@ def test_restart_resets(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(self.engine.results, [])
 ```
+Finally, it tests that appon restart the index, score, and results have all reset to the default value. 
+This tests that repeatable sessions are not only possible but work as intended. 
+That when the questions index finish, the engine picks up that it has transitioned set the next_question bool to false (correct terminal behaviour).
+
+## Quiz Graphical User Interface
+This is split up into three main sections, the start_screen, quiz_ui (question screen) and the end_screen. The Quiz_ui is the bridge between the user interface and the quiz logic that is all stored as part of the quiz_engine. It is responsible for displaying questions, handling user selections, validating submissions, managing quiz progression, and triggering the final results screen. The class uses internal state management, event‑driven methods, controlled flow transitions, and data passing between components to keep the quiz consistent and responsive. It also ensures user input is handled safely, explanations are delivered correctly, and results are recorded reliably at the end of the quiz session.
+
+The code mainly revolves around event-driven programming, the idea that the user triggers actions within the UI and the app responds accordingly. (e.g. clicking submit or next)
+
+```python
+    # submit or next, whiching from one button to the other when a question in answered or submitted
+    def _on_submit_or_next(self):
+        if self.awaiting_submit:
+            self._submit_answer()
+        else:
+            self._next_step()
+
+    def _submit_answer(self):
+        choice = self.selected.get()
+        if choice == -1:
+            self.messages.warn_no_selection() # If no answer is selected then it outputs the didn't choose anything warning message
+            return
+
+        q = self.engine.current_question()
+        explanation = q.get(
+            "explanation",
+            "This answer aligns with Databricks & Medallion best practices." # This gives a failsafe, if no explainataion is given then it just gives this general reason so the code dosen't break
+        )
+        is_correct = self.engine.check_answer(choice) # This updates the score and results list
+```
+This is one such example where I have used event-driven methods by using method switching between the submit button and the next question button keeping input handelling predictable and centralised as the user can only click one button at any one time. It avoids the potential errors that come with duplicated logic and ensures that the flow of the application always moves to the intended controlled checkpoint.
+
+This is also a good example of error handeling where th UI uses the module [Message box](https://docs.python.org/3/library/tkinter.messagebox.html) to safely warn the users when their actions are invalid such as in this case where "warning no selection" will apear if the user clicks of submit answer without having chosen an answer option. It can also be useful to prevent other elements of code brakage such as the results table not working as it would be missing a question input.
+
+#### Switching Screens
+```python
+
+if self.engine.next_question():
+    self.show_question()
+else:
+    append_result(self.user_name, self.engine.score, len(self.engine.questions))
+```
+This is a clean example of state transition logic, moving from quiz mode → end screen based on engine state.
+
+#### Graphical Elements
+
+```python
+        # Build new Radiobuttons that match the figma colour scheme
+        for i, opt in enumerate(q["options"]):
+            rb = tk.Radiobutton(
+                self.options_frame,
+                text=opt,
+                variable=self.selected,
+                value=i,
+                font=("Arial", 14),
+                fg=WHITE,
+                bg=BG_DARK,
+                activebackground=BG_DARK,
+                activeforeground=WHITE,
+                selectcolor=BG_DARK,     # keeps indicator background matching the dark bg
+                anchor="w",
+                justify="left",
+                wraplength=720
+            )
+            rb.pack(anchor="w", fill="x", pady=8)
+            self.option_buttons.append(rb)
+```
+A fair amount of the rest of the quiz_ui code looks like this, filled with different visual parameters that have been taylored to match the databricks example and colour palette. Visual parameters (fg/bg/active*/selectcolor/anchor/justify/wraplength) make options readable, themed, and neatly aligned in a dark UI. The actual radio button loop itself builds one button per option binding them to a shared IntVar for mutually exclusive selection.
+
+## Start and Ending Screen
+
+The code here is almost identical to that of the quiz UI in terms of the visual elements however there are also some noticeble changes that are worth mentioning. 
+Such as the more in-depth error handeling within the start screen to restrict the user to only input a valid name, this input validation is monitored via [re](https://docs.python.org/3/library/re.html) or Regular expression operations.
+
+```python
+# Letters and hyphens only, 3–15 chars, must start/end with a letter
+NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
+```
+```python
+    # HANDLER WITH VALIDATION
+    def _handle_start(self):
+        raw = (self.name_entry.get() or "").strip()
+
+        # Treat placeholder as empty
+        if raw == "" or raw == "Input name:":
+            messagebox.showwarning(
+                "Name required",
+                "Please enter your name (3–25 letters, hyphens allowed)."
+            )
+            self.name_entry.focus_set()
+            self.name_entry.select_range(0, tk.END)
+            return
+
+        # Validate with regex: letters + hyphens, 3–15 chars, must start/end with a letter
+        if not NAME_REGEX.match(raw):
+            messagebox.showwarning(
+                "Invalid name",
+                "Your name must be 3–15 characters, contain only letters and hyphens (-), "
+                "and begin and end with a letter.\n\nExamples:\n• Elliot\n• Pacey-Carrier"
+            )
+            self.name_entry.focus_set()
+            self.name_entry.select_range(0, tk.END)
+            return
+
+        # If valid, proceed
+        name = raw
+        self.hide()
+        self.on_start(name)
+```
+#### Summary of the code
+The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
+
+
 
