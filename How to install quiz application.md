@@ -1,6 +1,6 @@
 # How to install quiz application
 
-- First download as a zip file
+- First press the green code button and download as a zip file
 
 <img width="500" alt="image" src="https://github.com/user-attachments/assets/3180e511-9704-4653-9d10-7c067619a1eb" />
 
