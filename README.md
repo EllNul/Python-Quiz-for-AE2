@@ -15,7 +15,8 @@ The layout of the quiz and user journey includes 3 main screens:
 -	The main quiz screen, this will consist of the 15 multiple choice questions with 4 options for each question to choose from.  Each answer will provide a pop up that says if you got the questions correct or incorrect as well as an explanation of the answer. There is also a submit and next question button at the bottom of this page too.
 -	Once all questions have been answered the ending screen will appear and give you your total score and a breakdown of each questions results as well as another button if the user wishes to take the quiz again (restart).
 
-[https://github.com/EllNul/Python-Quiz-for-AE2/blob/main/Images/Code%20Design.png](https://github.com/EllNul/Python-Quiz-for-AE2/blob/main/Images/Code%20Design.png?raw=true)
+<img width="691" height="262" alt="image" src="https://github.com/user-attachments/assets/273cc40d-44fd-4934-95a4-d7dd5dde677a" />
+
 
 
 
