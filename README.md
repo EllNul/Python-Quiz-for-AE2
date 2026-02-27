@@ -121,7 +121,7 @@ def check_answer(self, choice_index: int) -> bool:
     return is_correct
 ```
 This section of the code pulls from another file called quiz questions. 
-Quiz Questions if layed out in a way where it supplies the question, options, answer in the form of an answer_index as well as an explaination which contains the reasoning behind the answers.
+Quiz Questions is layed out in a way where it supplies the question, options, answer in the form of an answer_index as well as an explaination which contains the reasoning behind the answers.
 It is formatted like the example below.
 ```python
 QUESTIONS = [
