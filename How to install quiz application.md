@@ -8,5 +8,8 @@
 
 <img width="294" height="390" alt="image" src="https://github.com/user-attachments/assets/afa27446-1911-4394-8c75-1355d483c5db" />
 
+- Next open up visual studio code and open a new folder
+
+
 
 
