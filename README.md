@@ -19,7 +19,11 @@ I wanted the style of the quiz to also match the look of databricks.
 
 <img width="691" height="262" alt="image" src="https://github.com/user-attachments/assets/273cc40d-44fd-4934-95a4-d7dd5dde677a" />
 
+
 This is an image of what the main home screen looks like as well as my comments relating to the colour palette which will be the main way for users to have that familiarity with the quiz and  databricks. I then pulled each colour into a colour palette and designed the wireframe of the quiz application.
+
+<img width="197" height="278" alt="image" src="https://github.com/user-attachments/assets/9b50ed3c-d2b7-427a-afe6-359bae1cb5b6" />
+
 
 
 This includes
