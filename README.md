@@ -59,14 +59,14 @@ BLUE      = “#4D91EA”
 -	Restart Button
 
 ### Tech Stack Outline
-•	[Python 3](https://docs.python.org/3/) — core programming language
-•	[Tkinter](https://docs.python.org/3/library/tkinter.html) — desktop graphical user interface
-•	[csv](https://docs.python.org/3/library/csv.html) — local data storage in CSV format
-•	[re](https://docs.python.org/3/library/re.html) — regular expressions for input validation
-•	[datetime](https://docs.python.org/3/library/datetime.html) — timestamp generation
-•	[unittest](https://docs.python.org/3/library/unittest.html) — automated unit testing
-•	[Path](https://docs.python.org/3/library/pathlib.html)  — where the results will be stored
-•	[Message box](https://docs.python.org/3/library/tkinter.messagebox.html) — message window visual
+-	[Python 3](https://docs.python.org/3/) — core programming language
+-	[Tkinter](https://docs.python.org/3/library/tkinter.html) — desktop graphical user interface
+-	[csv](https://docs.python.org/3/library/csv.html) — local data storage in CSV format
+-	[re](https://docs.python.org/3/library/re.html) — regular expressions for input validation
+-	[datetime](https://docs.python.org/3/library/datetime.html) — timestamp generation
+-	[unittest](https://docs.python.org/3/library/unittest.html) — automated unit testing
+-	[Path](https://docs.python.org/3/library/pathlib.html)  — where the results will be stored
+-	[Message box](https://docs.python.org/3/library/tkinter.messagebox.html) — message window visual
 
 
 
