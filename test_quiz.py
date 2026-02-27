@@ -5,7 +5,7 @@ from quiz_engine import QuizEngine # Importing from quiz_engine for testing
 from quiz_questions import QUESTIONS # Importing from quiz_questions testing
 
 
-class TestSmoke(unittest.TestCase): # Smoke test to make sure that unittest is working (testing the tes)
+class TestSmoke(unittest.TestCase): # Smoke test to make sure that unittest is working (testing the test)
 
     def test_unittest_runs(self):
         self.assertTrue(True) # True is always true so should always pass
