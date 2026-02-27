@@ -40,14 +40,6 @@ The image below represent a baseline for the visual appearance of the quiz and w
 ## Non Functional Requirements
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/a33d82ce-1a2d-42bc-b18c-f6adb8f4b0f5" />
 
-
--	Font size must be accessible
--	Message box to show  “incorrect” or “correct”
--	Message box to show  answer explanation
--	Message box to show answer must be selected before next question
--	Name input error handling 
--	Restart Button
-
 ### Tech Stack Outline
 -	[Python 3](https://docs.python.org/3/) — core programming language
 -	[Tkinter](https://docs.python.org/3/library/tkinter.html) — desktop graphical user interface
@@ -174,6 +166,9 @@ class TestQuizEngine(unittest.TestCase): # Testing the quiz engine
         self.assertEqual(self.engine.score, 0)
         self.assertEqual(self.engine.results, []) 
 ```
+This sets up a new isolated quiz engine instance and tests that the inital state of the quiz must always be index=0, score=0, and results=[].
+It makes sure that the default state of the quiz always remains the same thus also testing regressions that would change this state such as the restart button not reseting the quiz value attributes.
+
 #### Testing correct answers
 
 ```python
@@ -199,6 +194,8 @@ def test_incorrect_answer_does_not_increment_score(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(len(self.engine.results), 1)
 ```
+This tests both sides of the user input, when either a correct answer or incorrect answer is chosen that the score is refelected in the way it should be. As part of the test driven development it ensures that the answer_index is working as it should do. That the quiz_engine and quiz_questions (where the answer_index is stored) are working in tandem with one-another. By testing for both the correct and incorrect user paths it makes sure that testing is more robust, that either side-effect is consistant with the method's declared semantics.
+
 #### Testing Restart
 ```python
 def test_restart_resets(self):
@@ -210,4 +207,5 @@ def test_restart_resets(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(self.engine.results, [])
 ```
-
+Finally, it tests that appon restart the index, score, and results have all reset to the default value. 
+This tests that repeatable sessions are not only possible but worth as intended, that when the questions finish the quiz engine picks up that there are no more questions (correct terminal behaviour).
