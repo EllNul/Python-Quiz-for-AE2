@@ -1,7 +1,7 @@
 # start_screen.py
 import tkinter as tk
-from tkinter import messagebox      # NEW: for popups
-import re                            # NEW: for name validation
+from tkinter import messagebox    
+import re                            
 
 #PALETTE KEY
 BG_DARK   = "#1F2630"

@@ -14,7 +14,7 @@ def append_result(name: str, score: int, total: int, csv_path: Path | str = RESU
 
     percent = round((score / total) * 100, 2) if total > 0 else 0.0
 
-    # Ensure parent folder exists (in case it passes a path in OneDrive or similar)
+    # Ensure parent folder exists
     csv_path.parent.mkdir(parents=True, exist_ok=True)
 
     with csv_path.open(mode="a", newline="", encoding="utf-8") as f:
