@@ -28,9 +28,11 @@ This is an image of what the main home screen looks like as well as my comments 
 </p>
 
 
-This includes
+The image below represent a baseline for the visual appearance of the quiz and well as showcasing the navigational flow for users and planned screen layouts matching the colour palette shown above.
 
-start_screen.py
+<p align="center">
+<img width="197" height="278" alt="image" src="https://github.com/user-attachments/assets/9b50ed3c-d2b7-427a-afe6-359bae1cb5b6" />
+</p>
 
 Quiz_ui.py
 
