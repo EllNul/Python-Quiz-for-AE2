@@ -276,7 +276,7 @@ This is a clean example of state transition logic, moving from quiz mode → end
 ```
 A fair amount of the rest of the quiz_ui code looks like this, filled with different visual parameters that have been taylored to match the databricks example and colour palette. Visual parameters (fg/bg/active*/selectcolor/anchor/justify/wraplength) make options readable, themed, and neatly aligned in a dark UI. The actual radio button loop itself builds one button per option binding them to a shared IntVar for mutually exclusive selection.
 
-## Start and Ending Screen
+## Start screen
 
 The code here is almost identical to that of the quiz UI in terms of the visual elements however there are also some noticeble changes that are worth mentioning. 
 Such as the more in-depth error handeling within the start screen to restrict the user to only input a valid name, this input validation is monitored via [re](https://docs.python.org/3/library/re.html) or Regular expression operations.
@@ -316,7 +316,7 @@ NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
         self.hide()
         self.on_start(name)
 ```
-#### Summary of the code
+#### Summary of start screen input validation/ error handling code
 The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
 
 
