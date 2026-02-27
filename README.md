@@ -237,4 +237,28 @@ The code mainly revolves around event-driven programming, the idea that the user
         )
         is_correct = self.engine.check_answer(choice) # This updates the score and results list
 ```
-In this example
+This is one such example where I have used event-driven methods by using method switching between the submit button and the next question button keeping input handelling predictable and centralised as the user can only click one button at any one time. It avoids the potential errors that come with duplicated logic and ensures that the flow of the application always moves to the intended controlled checkpoint.
+
+This is also a good example of error handeling where th UI uses the module [Message box](https://docs.python.org/3/library/tkinter.messagebox.html) to safely warn the users when their actions are invalid such as in this case where "warning no selection" will apear if the user clicks of submit answer without having chosen an answer option. It can also be useful to prevent other elements of code brakage such as the results table not working as it would be missing a question input.
+
+#### Switching Screens
+```python
+
+if self.engine.next_question():
+    self.show_question()
+else:
+    append_result(self.user_name, self.engine.score, len(self.engine.questions))
+```
+This is a clean example of state transition logic, moving from quiz mode → end screen based on engine state.
+
+
+
+
+
+
+
+
+
+
+
+
