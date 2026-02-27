@@ -194,7 +194,7 @@ def test_incorrect_answer_does_not_increment_score(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(len(self.engine.results), 1)
 ```
-This tests both sides of the user input, when either a correct answer or incorrect answer is chosen that the score is refelected in the way it should be. As part of the test driven development it ensures that the answer_index is working as it should do. That the quiz_engine and quiz_questions (where the answer_index is stored) are working in tandem with one-another. By testing for both the correct and incorrect user paths it makes sure that testing is more robust, that either side-effect is consistant with the method's declared semantics.
+This tests both sides of the user input, when either a correct answer or incorrect answer is chosen that the score is reflected in the way it should be. As part of the test driven development, it ensures that the answer_index is working as it should do. That the quiz_engine and quiz_questions (where the answer_index is stored) are working in tandem with one-another. By testing for both the correct and incorrect user paths it makes sure that testing is more robust, that either side-effect is consistant with the method's declared semantics.
 
 #### Testing Restart
 ```python
@@ -207,7 +207,7 @@ def test_restart_resets(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(self.engine.results, [])
 ```
-Finally, it tests that appon restart the index, score, and results have all reset to the default value. 
+Finally, it tests that upon restart the index, score, and results have all reset to the default value. 
 This tests that repeatable sessions are not only possible but work as intended. 
 That when the questions index finish, the engine picks up that it has transitioned set the next_question bool to false (correct terminal behaviour).
 
@@ -281,9 +281,9 @@ The code mainly revolves around event-driven programming, the idea that the user
         )
         is_correct = self.engine.check_answer(choice) # This updates the score and results list
 ```
-This is one such example where I have used event-driven methods by using method switching between the submit button and the next question button keeping input handelling predictable and centralised as the user can only click one button at any one time. It avoids the potential errors that come with duplicated logic and ensures that the flow of the application always moves to the intended controlled checkpoint.
+This is one such example where I have used event-driven methods by using method switching between the submit button and the next question button keeping input handling predictable and centralised as the user can only click one button at any one time. It avoids the potential errors that come with duplicated logic and ensures that the flow of the application always moves to the intended controlled checkpoint.
 
-This is also a good example of error handeling where th UI uses the module [Message box](https://docs.python.org/3/library/tkinter.messagebox.html) to safely warn the users when their actions are invalid such as in this case where "warning no selection" will apear if the user clicks of submit answer without having chosen an answer option. It can also be useful to prevent other elements of code brakage such as the results table not working as it would be missing a question input.
+This is also a good example of error handling where the UI uses the module [Message box](https://docs.python.org/3/library/tkinter.messagebox.html) to safely warn the users when their actions are invalid such as in this case where "warning no selection" will appear if the user clicks of submit answer without having chosen an answer option. It can also be useful to prevent other elements of code breakage such as the results table not working as it would be missing a question input.
 
 #### Switching Screens
 ```python
@@ -364,7 +364,7 @@ NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
 The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
 
 #### Results table
-Finally there is the results table, this is connected to the mainquiz UI and stores the "name", "score", "total", "percent" and "timestamp" of all the users who have done the quiz as well as the time they did it.
+Finally, there is the results table, this is connected to the main quiz UI and stores the "name", "score", "total", "percent" and "timestamp" of all the users who have done the quiz as well as the time they did it.
 This is really useful as it stores user progress as part of a CSV file and due to the ability to re-run the quiz it could also showcase progress if the user wanted to take the quiz again after some databricks training.
 
 ```python
@@ -392,11 +392,17 @@ Here is a visual of the end product,
 <img width="400" alt="image" src="https://github.com/user-attachments/assets/5a8a0e48-69d1-43ff-9c12-94d34b0dc657" />
 </p>
 <p align="center">
+(cropped slighty but button in central in the app)
+</p>
+<p align="center">
 <img width="400" src="https://github.com/user-attachments/assets/f63d37df-814a-4dfe-ae70-bdbde2008c2b" />
 </p>
 
+Overall, I was really happy with the end result of the quiz. Development for the most part went quite smoothly and I was pleased with the quiz engine and overall design matching very closely to the initial Figma GUI prototype. This however also but a lot of time constraints on the project and in future I would probably prefer to experiment with more modern GUI python modules. I went for quiz a modern design using a slightly outdated Tkinter module which meant the UI coding felt quite clunky at times, that being said I would use Tkinter again to create application prototypes as I think it is fairly straight forward to utilise. 
 
-I was really happy with the end result of the quiz..
+The quiz itself had positive feedback, users could quite easily run the quiz application through their own machine however this did take a bit of setting up at first. In the future I would like to make this more accessible, as everyone who attempted the quiz was already quiz familiar with visual studio code so those that might not would have more of a difficult time. Users also mentioned that while the quiz was a good indicator for beginners using databricks, they mentioned that future iterations should include harder questions to not only highlight those that need training but staff that also already have a significant background with databricks.
+
+
 
 
 
