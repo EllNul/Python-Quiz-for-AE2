@@ -43,13 +43,12 @@ The image below represent a baseline for the visual appearance of the quiz and w
 -	Minimum aspect ration in order to not break visuals
 ### Non-Functional Requirements
 -	Include the following colour scheme from the colour palette.
-
-- BG_DARK   = “#1F2630”
-- WHITE     = “#E2E2E2”
-- ACCENT    = “#F86153”
-- GREY      = “#5E5757”
-- BORDER    = “#000000”
-- BLUE      = “#4D91EA”
+BG_DARK   = “#1F2630”\
+WHITE     = “#E2E2E2”\
+ACCENT    = “#F86153”\
+GREY      = “#5E5757”\
+BORDER    = “#000000”\
+BLUE      = “#4D91EA”\
 
 -	Font size must be accessible
 -	Message box to show  “incorrect” or “correct”
@@ -72,7 +71,7 @@ The image below represent a baseline for the visual appearance of the quiz and w
 <p align="center">
 <img width="1113" height="760" alt="image" src="https://github.com/user-attachments/assets/cd259829-98d2-461e-936f-7d6dd175646b" />
 </p>
-Here is the code design I made in [draw.io](https://app.diagrams.net/), This showcases the 9 different files that will be present within the code. They consist of:
+Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a>. This showcases the 9 different files that will be present within the code. They consist of, This showcases the 9 different files that will be present within the code. They consist of:
 -	Quiz Engine – Code that manages everything that isn’t the user interface (UI) such as keeping track of the score, pulling the questions, question index, question explanations and checking if the selected answer is correct.
 -	Quiz App – Links all the UI elements and Quiz Engine together, this is also where you run the main quiz application. (run this bit of code and it will run the entire quiz)
 All the Tkinter graphical code:
