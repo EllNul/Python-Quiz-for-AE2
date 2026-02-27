@@ -363,5 +363,29 @@ NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
 #### Summary of start screen input validation/ error handling code
 The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
 
+#### Results table
+Finally there is the results table, this is connected to the mainquiz UI and stores the name and reults of all the users who have done the quiz as well as the time they did it.
+This is really useful to be able to store user progress due to the ability to be able to re-run the quiz and could showcase progress if the user wanted to take the quiz again after some databricks training.
+
+
+```python
+RESULTS_CSV = Path("quiz_results.csv")
+def append_result(name: str, score: int, total: int, csv_path: Path | str = RESULTS_CSV) -> None:
+    csv_path = Path(csv_path)
+    file_exists = csv_path.exists()
+    # Local time with timezone info
+    ts = datetime.now().astimezone().isoformat(timespec="seconds")
+    percent = round((score / total) * 100, 2) if total > 0 else 0.0
+    # Ensure parent folder exists
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    with csv_path.open(mode="a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(["name", "score", "total", "percent", "timestamp_iso"])
+        writer.writerow([name, score, total, percent, ts])
+```
+## Evaluation
+
+
 
 
