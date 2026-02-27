@@ -89,7 +89,20 @@ Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a
 
 ## Development and Testing
 
+#### First Developing the quiz engine
 
+The QuizEngine is an object‑oriented Python class that acts as the core logic layer for the quiz application. It is responsible for managing quiz state, tracking user progress, verifying answers, and preparing data for the UI layer. This engine encapsulates quiz behaviour using OOP principles such as encapsulation, state management, and method‑driven interactions.
+Below are the three most important and impactful parts of the code, explained with embedded code snippets.
+
+The constructor (__init__) automatically runs when creating a new QuizEngine object.
+It sets up the quiz’s internal state, including the question list, index tracking, score counter, and answer history.
+
+class QuizEngine:
+    def __init__(self):
+        self.questions = QUESTIONS
+        self.index = 0
+        self.score = 0
+        self.results = []  # Keep Track of what question a user got right or wrong
 
 
 
