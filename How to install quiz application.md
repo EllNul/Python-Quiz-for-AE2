@@ -10,6 +10,10 @@
 
 - Next open up visual studio code and open a new folder
 
+<img width="495" height="708" alt="image" src="https://github.com/user-attachments/assets/ea63c19f-a7fc-4de5-96d6-050dcd1e57d0" />
+
+- If a secuirty message appears then just click that you trust the source :)
+
 
 
 
