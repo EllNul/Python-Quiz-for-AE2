@@ -72,7 +72,7 @@ Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a
 - Test Quiz – This includes all the unittest scripts that specifically targets the quiz engine testing for bugs/ errors in the scoring, switching question, incorrect/ correct answers etc.
 - Tk.Tk – This provides all the support the for Tkinter module. Code that uses or is connected to Tkinter must call on this through root.tk to become the main application window and is connected to Quiz UI, Start screen, End screen, and the quiz engine.
 
-## Development and Testing
+## Development, Testing and Coding Documentation
 
 #### First Developing the quiz engine
 
