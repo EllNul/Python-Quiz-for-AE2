@@ -17,7 +17,7 @@ class EndScreen:
 
     def __init__(self, root, results, score, total, on_restart):
         self.root = root
-        self.results = results              # list[tuple[str, bool]] -> (question_text, is_correct)
+        self.results = results 
         self.score = score
         self.total = total
         self.on_restart = on_restart
