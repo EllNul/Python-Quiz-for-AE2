@@ -1,8 +1,6 @@
 # Python-Quiz-for-Summative-AE2
 
-[Click here](How to install quiz application.md)
-to get instructions as to how to install the quiz application
-
+[Click here](https://github.com/EllNul/Python-Quiz-for-AE2/blob/main/How%20to%20install%20quiz%20application.md) to get instructions as to how to install the quiz application
 
 ## Introdcution
 
