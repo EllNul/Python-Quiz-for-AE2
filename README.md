@@ -91,8 +91,7 @@ Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a
 
 #### First Developing the quiz engine
 
-The QuizEngine is an object‑oriented Python class that acts as the core logic layer for the quiz application. It is responsible for managing quiz state, tracking user progress, verifying answers, and preparing data for the UI layer. This engine encapsulates quiz behaviour using OOP principles such as encapsulation, state management, and method‑driven interactions.
-Below are the three most important and impactful parts of the code, explained with embedded code snippets.
+The QuizEngine is an object‑oriented Python class that acts as the core logic layer for the quiz application. The main responcibilities of this code is managing the current quiz state by: tracking user progress, verifying answers, and preparing data for the UI layer. This is utalising OOP principles such as encapsulation to build the fields and user attributes, state management to hold and update these attribute values such as score, and method‑driven interactions so that things such as score are only updated when check_answer runs.
 
 The constructor (__init__) automatically runs when creating a new QuizEngine object.
 It sets up the quiz’s internal state, including the question list, index tracking, score counter, and answer history.
@@ -106,9 +105,21 @@ class QuizEngine:
         self.results = []  # Keep Track of what question a user got right or wrong for results at the end.
 ```
 
+### Answer Checking
+This method verifies if the user's choice is correct, updates the score, and records the result.
 
+```python
+def check_answer(self, choice_index: int) -> bool:
+    question = self.current_question()
+    correct_index = question["answer_index"]
+    is_correct = (choice_index == correct_index)
 
+    self.results.append((question["question"], is_correct))
 
+    if is_correct:
+        self.score += 1
+    return is_correct
+```
 
 
 
