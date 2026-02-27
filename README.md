@@ -141,7 +141,7 @@ An option to restart the quiz, setting the index, score to 0 and clearing all th
 ```
 ## Engine Testing using Test Driven Development (TDD)
 
-While building the engine, at the same time I also built the testing script so that any continusous intergation(CI) within the engine was also matched with test driven development (TDD). Test Driven development is used here to make sure that the porject itself behaves as it is supposed to throughout development, this mean that I can make changes to the engine and the questions without the worry of regression (when one fix breaks another element accidently). The test that are carried out include:
+While building the engine, at the same time I also built the testing script so that any continusous intergation(CI) within the engine was also matched with test driven development (TDD). Test Driven development is used here to make sure that the porject itself behaves as it is supposed to throughout development, this mean that I can make changes to the engine and the questions without the worry of regression (when one fix breaks another element accidently). The test is ran manually from within visual studio code, 7 tests are ran in total each time and they include: Smoke Test, Question test, Quiz Engine test, __init__ test, incorrect test, correct answer input and finally restart test. Example of the code:
 
 #### Smoke Test
 ```python
@@ -211,6 +211,50 @@ Finally, it tests that appon restart the index, score, and results have all rese
 This tests that repeatable sessions are not only possible but work as intended. 
 That when the questions index finish, the engine picks up that it has transitioned set the next_question bool to false (correct terminal behaviour).
 
+The output of the test looks like this when ran successfully
+```python
+python -m unittest -v test_quiz.py   
+test_correct_answer_increments_score (test_quiz.TestQuizEngine.test_correct_answer_increments_score) ... ok
+test_incorrect_answer_does_not_increment_score (test_quiz.TestQuizEngine.test_incorrect_answer_does_not_increment_score) ... ok
+test_initial_state (test_quiz.TestQuizEngine.test_initial_state) ... ok
+test_next_question_works (test_quiz.TestQuizEngine.test_next_question_works) ... ok
+test_restart_resets (test_quiz.TestQuizEngine.test_restart_resets) ... ok
+test_questions_load (test_quiz.TestSmoke.test_questions_load) ... ok
+test_unittest_runs (test_quiz.TestSmoke.test_unittest_runs) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.004s
+
+OK
+```
+And this when errors occour highlighting exactly which lines within Quiz_Engine have effect errors within the unittest.
+
+```python
+python -m unittest -v test_quiz.py 
+test_correct_answer_increments_score (test_quiz.TestQuizEngine.test_correct_answer_increments_score) ... ERROR
+test_incorrect_answer_does_not_increment_score (test_quiz.TestQuizEngine.test_incorrect_answer_does_not_increment_score) ... ERROR
+test_initial_state (test_quiz.TestQuizEngine.test_initial_state) ... ok
+test_next_question_works (test_quiz.TestQuizEngine.test_next_question_works) ... ERROR
+test_restart_resets (test_quiz.TestQuizEngine.test_restart_resets) ... ERROR
+test_questions_load (test_quiz.TestSmoke.test_questions_load) ... ok
+test_unittest_runs (test_quiz.TestSmoke.test_unittest_runs) ... ok
+
+======================================================================
+ERROR: test_restart_resets (test_quiz.TestQuizEngine.test_restart_resets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\(Directory Hidden for Security)\test_quiz.py", line 72, in test_restart_resets
+    self.engine.check_answer(self.engine.current_question()["answer_index"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\(Directory Hidden for Security)\quiz_engine.py", line 13, in current_question
+    return self.questions[self.index] # Return the question dictionary for the current index.
+           ^^^^^^^^^^^^^^
+AttributeError: 'QuizEngine' object has no attribute 'questions'. Did you mean: 'quesions'?
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.007s
+FAILED (errors=4)
+```
 ## Quiz Graphical User Interface
 This is split up into three main sections, the start_screen, quiz_ui (question screen) and the end_screen. The Quiz_ui is the bridge between the user interface and the quiz logic that is all stored as part of the quiz_engine. It is responsible for displaying questions, handling user selections, validating submissions, managing quiz progression, and triggering the final results screen. The class uses internal state management, event‑driven methods, controlled flow transitions, and data passing between components to keep the quiz consistent and responsive. It also ensures user input is handled safely, explanations are delivered correctly, and results are recorded reliably at the end of the quiz session.
 
