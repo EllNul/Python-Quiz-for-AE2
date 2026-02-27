@@ -120,6 +120,19 @@ def check_answer(self, choice_index: int) -> bool:
         self.score += 1
     return is_correct
 ```
+This section of the code pulls from another file called quiz questions. 
+Quiz Questions if layed out in a way where it supplies the question, options, answer in the form of an answer_index as well as an explaination which contains the reasoning behind the answers.
+It is formatted like the example below.
+```python
+QUESTIONS = [
+{
+"question": "Q1: In Databricks, which layer should data analysts generally query for reporting?",
+"options": ["Bronze", "Silver", "Gold", "Raw"],   
+        "answer_index": 2,
+        "explanation": "Gold contains curated, business-ready tables (facts/dimensions) designed for analytics and BI consumption."
+},
+```
+
 #### Moving to the next question
 This controls the progression of the quiz, it does this by utalising the quiz index to check if there is another question.
 This also helps as part of the UI will want to know if there is any more questions, if the boolian is set to false it will move to the ending screen.
