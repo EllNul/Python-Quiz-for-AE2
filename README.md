@@ -208,4 +208,5 @@ def test_restart_resets(self):
     self.assertEqual(self.engine.results, [])
 ```
 Finally, it tests that appon restart the index, score, and results have all reset to the default value. 
-This tests that repeatable sessions are not only possible but worth as intended, that when the questions finish the quiz engine picks up that there are no more questions (correct terminal behaviour).
+This tests that repeatable sessions are not only possible but work as intended. 
+That when the questions index finish, the engine picks up that it has transitioned to the end_screen (correct terminal behaviour).
