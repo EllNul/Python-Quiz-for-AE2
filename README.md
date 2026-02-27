@@ -209,4 +209,32 @@ def test_restart_resets(self):
 ```
 Finally, it tests that appon restart the index, score, and results have all reset to the default value. 
 This tests that repeatable sessions are not only possible but work as intended. 
-That when the questions index finish, the engine picks up that it has transitioned to the end_screen (correct terminal behaviour).
+That when the questions index finish, the engine picks up that it has transitioned set the next_question bool to false (correct terminal behaviour).
+
+## Quiz Graphical User Interface
+This is split up into three main sections, the start_screen, quiz_ui (question screen) and the end_screen. The Quiz_ui is the bridge between the user interface and the quiz logic that is all stored as part of the quiz_engine. It is responsible for displaying questions, handling user selections, validating submissions, managing quiz progression, and triggering the final results screen. The class uses internal state management, event‑driven methods, controlled flow transitions, and data passing between components to keep the quiz consistent and responsive. It also ensures user input is handled safely, explanations are delivered correctly, and results are recorded reliably at the end of the quiz session.
+
+The code mainly revolves around event-driven programming, the idea that the user triggers actions within the UI and the app responds accordingly. (e.g. clicking submit or next)
+
+```python
+    # submit or next, whiching from one button to the other when a question in answered or submitted
+    def _on_submit_or_next(self):
+        if self.awaiting_submit:
+            self._submit_answer()
+        else:
+            self._next_step()
+
+    def _submit_answer(self):
+        choice = self.selected.get()
+        if choice == -1:
+            self.messages.warn_no_selection() # If no answer is selected then it outputs the didn't choose anything warning message
+            return
+
+        q = self.engine.current_question()
+        explanation = q.get(
+            "explanation",
+            "This answer aligns with Databricks & Medallion best practices." # This gives a failsafe, if no explainataion is given then it just gives this general reason so the code dosen't break
+        )
+        is_correct = self.engine.check_answer(choice) # This updates the score and results list
+```
+In this example
