@@ -97,13 +97,14 @@ Below are the three most important and impactful parts of the code, explained wi
 The constructor (__init__) automatically runs when creating a new QuizEngine object.
 It sets up the quiz’s internal state, including the question list, index tracking, score counter, and answer history.
 
+```
 class QuizEngine:
-    def __init__(self):
+    def __init__(self): # This means that it runs automatically when a new QuizEngine() object is made.
         self.questions = QUESTIONS
         self.index = 0
         self.score = 0
-        self.results = []  # Keep Track of what question a user got right or wrong
-
+        self.results = [] # Keep Track of what question a user got right or wrong for results at the end.
+```
 
 
 
