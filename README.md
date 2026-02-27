@@ -42,7 +42,7 @@ The image below represent a baseline for the visual appearance of the quiz and w
 -	Store these results as part of a CSV connected to username
 -	Minimum aspect ration in order to not break visuals
 ### Non-Functional Requirements
--	Include the following colour scheme from the colour palette.
+-	Include the following colour scheme from the colour palette.\
 BG_DARK   = “#1F2630”\
 WHITE     = “#E2E2E2”\
 ACCENT    = “#F86153”\
@@ -72,22 +72,22 @@ BLUE      = “#4D91EA”
 <img width="1113" height="760" alt="image" src="https://github.com/user-attachments/assets/cd259829-98d2-461e-936f-7d6dd175646b" />
 </p>
 Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a>. This showcases the 9 different files that will be present within the code. They consist of, This showcases the 9 different files that will be present within the code. They consist of:
-\
--	Quiz Engine – Code that manages everything that isn’t the user interface (UI) such as keeping track of the score, pulling the questions, question index, question explanations and checking if the selected answer is correct.
--	Quiz App – Links all the UI elements and Quiz Engine together, this is also where you run the main quiz application. (run this bit of code and it will run the entire quiz)
-\
-All the Tkinter graphical code:
--	Quiz UI – This is the main graphical interface and is responsible for overall design of each page, it also creates the start and end pages to switch between the three different views. It interacts with the quiz engine through the quiz app as well as any pop-up messages.
--	Start screen – All the graphics for the start screen, also including some error handling for the username.
--	Ending screen – Graphics for ending page that showcases the users score and if they would like to restart the quiz.
-\
-Extras
--	Messages – All the pop-up messages for correct or incorrect answers including errors.
--	Quiz Questions – All the questions, options, answers and explanations.
--	Test Quiz – This includes all the unittest scripts that specifically targets the quiz engine testing for bugs/ errors in the scoring, switching question, incorrect/ correct answers etc.
--	Tk.Tk – This provides all the support the for Tkinter module. Code that uses or is connected to Tkinter must call on this through root.tk to become the main application window and is connected to Quiz UI, Start screen, End screen, and the quiz engine.
 
+- Quiz Engine – Code that manages everything that isn’t the user interface (UI) such as keeping track of the score, pulling the questions, question index, question explanations and checking if the selected answer is correct.
+- Quiz App – Links all the UI elements and Quiz Engine together, this is also where you run the main quiz application. (run this bit of code and it will run the entire quiz)
 
+#### All the Tkinter graphical code:
+- Quiz UI – This is the main graphical interface and is responsible for overall design of each page, it also creates the start and end pages to switch between the three different views. It interacts with the quiz engine through the quiz app as well as any pop-up messages.
+- Start screen – All the graphics for the start screen, also including some error handling for the username.
+- Ending screen – Graphics for ending page that showcases the users score and if they would like to restart the quiz.
+
+#### Extras
+- Messages – All the pop-up messages for correct or incorrect answers including errors.
+- Quiz Questions – All the questions, options, answers and explanations.
+- Test Quiz – This includes all the unittest scripts that specifically targets the quiz engine testing for bugs/ errors in the scoring, switching question, incorrect/ correct answers etc.
+- Tk.Tk – This provides all the support the for Tkinter module. Code that uses or is connected to Tkinter must call on this through root.tk to become the main application window and is connected to Quiz UI, Start screen, End screen, and the quiz engine.
+
+## Development and Testing
 
 
 
