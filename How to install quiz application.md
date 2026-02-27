@@ -16,9 +16,9 @@
 
 <img width="600" alt="image" src="https://github.com/user-attachments/assets/3cfff84c-2247-4c06-8cc1-43d4dae861e7" />
 
-- All that is left to do now is to click on the quiz_app.py on the left hand side of the page and press the run play button on the right hand side
-- 
+- All that is left to do now is to click on the quiz_app.py on the left hand side of the page and press the run play button on the right hand side.
+  
 <img width="875" height="214" alt="image" src="https://github.com/user-attachments/assets/46c3c24f-fad4-44a2-96fe-e9a5dfbe3ba1" />
 
 - Hope you enjoy! XD
-
+- Thankyou for taking my Quiz.
