@@ -34,13 +34,8 @@ The image below represent a baseline for the visual appearance of the quiz and w
 <img width="781" height="215" alt="image" src="https://github.com/user-attachments/assets/8e9290d8-7505-4bbb-9537-887366f6872b" />
 </p>
 
-### Functional Requirements of the quiz app
--	Input and store name
--	Navigate between questions
--	Submit question selection
--	Get a score out of 15
--	Store these results as part of a CSV connected to username
--	Minimum aspect ration in order to not break visuals
+<img width="1171" height="700" alt="image" src="https://github.com/user-attachments/assets/e9cfb728-6bba-4ddf-96e0-957d28cefc61" />
+
 ### Non-Functional Requirements
 -	Include the following colour scheme from the colour palette.\
 BG_DARK   = “#1F2630”\
