@@ -34,16 +34,12 @@ The image below represent a baseline for the visual appearance of the quiz and w
 <img width="781" height="215" alt="image" src="https://github.com/user-attachments/assets/8e9290d8-7505-4bbb-9537-887366f6872b" />
 </p>
 
+## Functional Requirements
 <img width="1171" height="700" alt="image" src="https://github.com/user-attachments/assets/e9cfb728-6bba-4ddf-96e0-957d28cefc61" />
 
-### Non-Functional Requirements
--	Include the following colour scheme from the colour palette.\
-BG_DARK   = “#1F2630”\
-WHITE     = “#E2E2E2”\
-ACCENT    = “#F86153”\
-GREY      = “#5E5757”\
-BORDER    = “#000000”\
-BLUE      = “#4D91EA”
+## Non Functional Requirements
+<img width="1174" height="678" alt="image" src="https://github.com/user-attachments/assets/a33d82ce-1a2d-42bc-b18c-f6adb8f4b0f5" />
+
 
 -	Font size must be accessible
 -	Message box to show  “incorrect” or “correct”
