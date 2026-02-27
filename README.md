@@ -34,6 +34,51 @@ The image below represent a baseline for the visual appearance of the quiz and w
 <img width="781" height="215" alt="image" src="https://github.com/user-attachments/assets/8e9290d8-7505-4bbb-9537-887366f6872b" />
 </p>
 
+### Functional Requirements of the quiz app
+-	Input and store name
+-	Navigate between questions
+-	Submit question selection
+-	Get a score out of 15
+-	Store these results as part of a CSV connected to username
+-	Minimum aspect ration in order to not break visuals
+### Non-Functional Requirements
+-	Include the following colour scheme from the colour palette.
+
+BG_DARK   = “#1F2630”
+WHITE     = “#E2E2E2”
+ACCENT    = “#F86153”
+GREY      = “#5E5757”
+BORDER    = “#000000”
+BLUE      = “#4D91EA”
+
+-	Font size must be accessible
+-	Message box to show  “incorrect” or “correct”
+-	Message box to show  answer explanation
+-	Message box to show answer must be selected before next question
+-	Name input error handling 
+-	Restart Button
+Tech Stack Outline
+•	Python 3 — core programming language
+•	Tkinter — desktop graphical user interface
+•	csv — local data storage in CSV format
+•	re — regular expressions for input validation
+•	datetime — timestamp generation
+•	unittest — automated unit testing
+•	Path  — where the results will be stored
+•	Message box — message window visual
+
+
+
+
+
+
+
+
+
+
+
+
+
 Quiz_ui.py
 
 ending_screen.py
