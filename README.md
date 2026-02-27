@@ -141,7 +141,7 @@ An option to restart the quiz, setting the index, score to 0 and clearing all th
 ```
 ## Engine Testing using Test Driven Development (TDD)
 
-While building the engine, at the same time I also built the testing script so that any continusous intergation(CI) within the engine was also matched with test driven development (TDD). Test Driven development is used here to make sure that the porject itself behaves as it is supposed to throughout development, this mean that I can make changes to the engine and the questions without the worry of regression (when one fix breaks another element accidently). The test that are carried out include:
+While building the engine, at the same time I also built the testing script so that any continusous intergation(CI) within the engine was also matched with test driven development (TDD). Test Driven development is used here to make sure that the porject itself behaves as it is supposed to throughout development, this mean that I can make changes to the engine and the questions without the worry of regression (when one fix breaks another element accidently). The test is ran manually from within visual studio code, 7 tests are ran in total each time and they include: Smoke Test, Question test, Quiz Engine test, __init__ test, incorrect test, correct answer input and finally restart test. Example of the code:
 
 #### Smoke Test
 ```python
@@ -211,6 +211,50 @@ Finally, it tests that appon restart the index, score, and results have all rese
 This tests that repeatable sessions are not only possible but work as intended. 
 That when the questions index finish, the engine picks up that it has transitioned set the next_question bool to false (correct terminal behaviour).
 
+The output of the test looks like this when ran successfully
+```python
+python -m unittest -v test_quiz.py   
+test_correct_answer_increments_score (test_quiz.TestQuizEngine.test_correct_answer_increments_score) ... ok
+test_incorrect_answer_does_not_increment_score (test_quiz.TestQuizEngine.test_incorrect_answer_does_not_increment_score) ... ok
+test_initial_state (test_quiz.TestQuizEngine.test_initial_state) ... ok
+test_next_question_works (test_quiz.TestQuizEngine.test_next_question_works) ... ok
+test_restart_resets (test_quiz.TestQuizEngine.test_restart_resets) ... ok
+test_questions_load (test_quiz.TestSmoke.test_questions_load) ... ok
+test_unittest_runs (test_quiz.TestSmoke.test_unittest_runs) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.004s
+
+OK
+```
+And this when errors occour highlighting exactly which lines within Quiz_Engine have caused errors within the unittest.
+
+```python
+python -m unittest -v test_quiz.py 
+test_correct_answer_increments_score (test_quiz.TestQuizEngine.test_correct_answer_increments_score) ... ERROR
+test_incorrect_answer_does_not_increment_score (test_quiz.TestQuizEngine.test_incorrect_answer_does_not_increment_score) ... ERROR
+test_initial_state (test_quiz.TestQuizEngine.test_initial_state) ... ok
+test_next_question_works (test_quiz.TestQuizEngine.test_next_question_works) ... ERROR
+test_restart_resets (test_quiz.TestQuizEngine.test_restart_resets) ... ERROR
+test_questions_load (test_quiz.TestSmoke.test_questions_load) ... ok
+test_unittest_runs (test_quiz.TestSmoke.test_unittest_runs) ... ok
+
+======================================================================
+ERROR: test_restart_resets (test_quiz.TestQuizEngine.test_restart_resets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\(Directory Hidden for Security)\test_quiz.py", line 72, in test_restart_resets
+    self.engine.check_answer(self.engine.current_question()["answer_index"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\(Directory Hidden for Security)\quiz_engine.py", line 13, in current_question
+    return self.questions[self.index] # Return the question dictionary for the current index.
+           ^^^^^^^^^^^^^^
+AttributeError: 'QuizEngine' object has no attribute 'questions'. Did you mean: 'quesions'?
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.007s
+FAILED (errors=4)
+```
 ## Quiz Graphical User Interface
 This is split up into three main sections, the start_screen, quiz_ui (question screen) and the end_screen. The Quiz_ui is the bridge between the user interface and the quiz logic that is all stored as part of the quiz_engine. It is responsible for displaying questions, handling user selections, validating submissions, managing quiz progression, and triggering the final results screen. The class uses internal state management, event‑driven methods, controlled flow transitions, and data passing between components to keep the quiz consistent and responsive. It also ensures user input is handled safely, explanations are delivered correctly, and results are recorded reliably at the end of the quiz session.
 
@@ -276,7 +320,7 @@ This is a clean example of state transition logic, moving from quiz mode → end
 ```
 A fair amount of the rest of the quiz_ui code looks like this, filled with different visual parameters that have been taylored to match the databricks example and colour palette. Visual parameters (fg/bg/active*/selectcolor/anchor/justify/wraplength) make options readable, themed, and neatly aligned in a dark UI. The actual radio button loop itself builds one button per option binding them to a shared IntVar for mutually exclusive selection.
 
-## Start and Ending Screen
+## Start screen
 
 The code here is almost identical to that of the quiz UI in terms of the visual elements however there are also some noticeble changes that are worth mentioning. 
 Such as the more in-depth error handeling within the start screen to restrict the user to only input a valid name, this input validation is monitored via [re](https://docs.python.org/3/library/re.html) or Regular expression operations.
@@ -316,7 +360,7 @@ NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
         self.hide()
         self.on_start(name)
 ```
-#### Summary of the code
+#### Summary of start screen input validation/ error handling code
 The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
 
 
