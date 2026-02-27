@@ -158,7 +158,9 @@ An option to restart the quiz, setting the index, score to 0 and clearing all th
 ```
 ## Engine Testing using Test Driven Development (TDD)
 
-####Smoke Test
+While building the engine, at the same time I also built the testing script so that any continusous intergation(CI) within the engine was also matched with test driven development (TDD). Test Driven development is used here to make sure that the porject itself behaves as it is supposed to throughout development, this mean that I can make changes to the engine and the questions without the worry of regression (when one fix breaks another element accidently). The test that are carried out include:
+
+#### Smoke Test
 ```python
 class TestSmoke(unittest.TestCase):
 
@@ -168,7 +170,9 @@ class TestSmoke(unittest.TestCase):
     def test_questions_load(self):
         self.assertGreater(len(QUESTIONS), 0) # Make sure that questions is imported correctly, file isn't empty or broken
 ```
-####Testing quiz engine
+For testing I used a module called unittest, the smoke test is designed to make sure unittest framework itself is working before running any real tests. This helps identify any environmental errors such as problems with running python within visual studio code or any broken file paths. Here the basic tests include: Testing that True is True (which should always pass) as well as if the questions are being imported correctly which creates a reliable starting point for the test driven development.
+
+#### Testing quiz engine
 ```python
 class TestQuizEngine(unittest.TestCase): # Testing the quiz engine
     def setUp(self):
@@ -179,7 +183,7 @@ class TestQuizEngine(unittest.TestCase): # Testing the quiz engine
         self.assertEqual(self.engine.score, 0)
         self.assertEqual(self.engine.results, []) 
 ```
-####Testing correct answers
+#### Testing correct answers
 
 ```python
 def test_correct_answer_increments_score(self):
@@ -204,7 +208,7 @@ def test_incorrect_answer_does_not_increment_score(self):
     self.assertEqual(self.engine.score, 0)
     self.assertEqual(len(self.engine.results), 1)
 ```
-####Testing Restart
+#### Testing Restart
 ```python
 def test_restart_resets(self):
     self.engine.check_answer(self.engine.current_question()["answer_index"])
