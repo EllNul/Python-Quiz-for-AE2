@@ -71,7 +71,7 @@ BLUE      = “#4D91EA”
 <p align="center">
 <img width="1113" height="760" alt="image" src="https://github.com/user-attachments/assets/cd259829-98d2-461e-936f-7d6dd175646b" />
 </p>
-Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a>. This showcases the 9 different files that will be present within the code. They consist of, This showcases the 9 different files that will be present within the code. They consist of:
+Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a>. This showcases the 9 different files that will be present within the code. They consist of:
 
 - Quiz Engine – Code that manages everything that isn’t the user interface (UI) such as keeping track of the score, pulling the questions, question index, question explanations and checking if the selected answer is correct.
 - Quiz App – Links all the UI elements and Quiz Engine together, this is also where you run the main quiz application. (run this bit of code and it will run the entire quiz)
@@ -93,38 +93,6 @@ Here is the code design I made in <a href="https://app.diagrams.net/">draw.io</a
 
 
 
-
-
-
-
-
-Quiz_ui.py
-
-ending_screen.py
-
-I need somewhere to store my questions as I would like to seperate each individual element of my quiz code to make it more managable if changes are needed.
-My message box alerts, testing, the quiz engine that keeps track of the scoreing, something to keep track of the results and one more file to bring everything together.
-
-quiz_questions.py
-
-messages.py
-
-test.quiz.py
-
-quiz_engine.py
-
-results.py
-
-quiz_app.py
-
-for nine files in total.
-
-QUESTIONS = [
-{
-        "question": "Which language is used to build Tkinter GUIs?",
-        "options": ["Java", "C#", "Python", "Go"],
-        "answer_index": 2},
-{
 
 
 
