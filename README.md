@@ -251,10 +251,30 @@ else:
 ```
 This is a clean example of state transition logic, moving from quiz mode → end screen based on engine state.
 
+#### Graphical Elements
 
-
-
-
+```python
+        # Build new Radiobuttons that match the figma colour scheme
+        for i, opt in enumerate(q["options"]):
+            rb = tk.Radiobutton(
+                self.options_frame,
+                text=opt,
+                variable=self.selected,
+                value=i,
+                font=("Arial", 14),
+                fg=WHITE,
+                bg=BG_DARK,
+                activebackground=BG_DARK,
+                activeforeground=WHITE,
+                selectcolor=BG_DARK,     # keeps indicator background matching the dark bg
+                anchor="w",
+                justify="left",
+                wraplength=720
+            )
+            rb.pack(anchor="w", fill="x", pady=8)
+            self.option_buttons.append(rb)
+```
+A fair amount of the rest of the quiz_ui code looks like this, filled with different visual parameters that have been taylored to match the databricks example and colour palette. Visual parameters (fg/bg/active*/selectcolor/anchor/justify/wraplength) make options readable, themed, and neatly aligned in a dark UI. The actual radio button loop itself build one button per option binding them to a shared IntVar for mutually exclusive selection.
 
 
 
