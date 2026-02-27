@@ -1,5 +1,9 @@
 # Python-Quiz-for-Summative-AE2
 
+[Click here](How to install quiz application.md)
+to get instructions as to how to install the quiz application
+
+
 ## Introdcution
 
 This is a databricks quiz and is a minimal viable product (MVP) developed for new users of databricks to test their knowledge around data modelling, the medallion architecture and other data analyst themed questions tailored to power BI developers. Part of work within the data side of Department for Education has been migrating SQL code and data within warehouse server databases to a much more modern online data store facility such as databricks that stores loud-based data within a Lakehouse architecture. This quiz has been developed to help beginner data modelers and power BI developers bridge this transition and also highlight area of improvement and knowledge gaps they might have.
