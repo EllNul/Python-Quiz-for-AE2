@@ -274,11 +274,50 @@ This is a clean example of state transition logic, moving from quiz mode → end
             rb.pack(anchor="w", fill="x", pady=8)
             self.option_buttons.append(rb)
 ```
-A fair amount of the rest of the quiz_ui code looks like this, filled with different visual parameters that have been taylored to match the databricks example and colour palette. Visual parameters (fg/bg/active*/selectcolor/anchor/justify/wraplength) make options readable, themed, and neatly aligned in a dark UI. The actual radio button loop itself build one button per option binding them to a shared IntVar for mutually exclusive selection.
+A fair amount of the rest of the quiz_ui code looks like this, filled with different visual parameters that have been taylored to match the databricks example and colour palette. Visual parameters (fg/bg/active*/selectcolor/anchor/justify/wraplength) make options readable, themed, and neatly aligned in a dark UI. The actual radio button loop itself builds one button per option binding them to a shared IntVar for mutually exclusive selection.
 
+## Start and Ending Screen
 
+The code here is almost identical to that of the quiz UI in terms of the visual elements however there are also some noticeble changes that are worth mentioning. 
+Such as the more in-depth error handeling within the start screen to restrict the user to only input a valid name, this input validation is monitored via [re](https://docs.python.org/3/library/re.html) or Regular expression operations.
 
+```python
+# Letters and hyphens only, 3–15 chars, must start/end with a letter
+NAME_REGEX = re.compile(r"^[A-Za-z](?:[A-Za-z\- ]{1,20})[A-Za-z]$")
+```
+```python
+    # HANDLER WITH VALIDATION
+    def _handle_start(self):
+        raw = (self.name_entry.get() or "").strip()
 
+        # Treat placeholder as empty
+        if raw == "" or raw == "Input name:":
+            messagebox.showwarning(
+                "Name required",
+                "Please enter your name (3–25 letters, hyphens allowed)."
+            )
+            self.name_entry.focus_set()
+            self.name_entry.select_range(0, tk.END)
+            return
+
+        # Validate with regex: letters + hyphens, 3–15 chars, must start/end with a letter
+        if not NAME_REGEX.match(raw):
+            messagebox.showwarning(
+                "Invalid name",
+                "Your name must be 3–15 characters, contain only letters and hyphens (-), "
+                "and begin and end with a letter.\n\nExamples:\n• Elliot\n• Pacey-Carrier"
+            )
+            self.name_entry.focus_set()
+            self.name_entry.select_range(0, tk.END)
+            return
+
+        # If valid, proceed
+        name = raw
+        self.hide()
+        self.on_start(name)
+```
+#### Summary of the code
+The _handle_start method validates the name entered on the start screen and only proceeds if it’s acceptable. It first normalizes the input, then blocks empty/placeholder values and rejects strings that don’t match a regex rule (letters and hyphens, 3–15 chars, must start/end with a letter). On failure, it shows a warning dialog, restores keyboard focus to the field, and pre‑selects the text for easy correction. On success, it hides the start screen and invokes on_start(name) to continue the app flow. The structure uses early returns, messagebox‑based feedback, and focus management to provide robust, user‑friendly error handling.
 
 
 
